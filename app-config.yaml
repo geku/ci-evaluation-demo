@@ -1,0 +1,5 @@
+service:
+  name: skaffold
+  type: NodePort
+  externalPort: 80
+  internalPort: 8080
