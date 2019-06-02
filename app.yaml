@@ -1,0 +1,25 @@
+default:
+  app_name: ci-evaluation
+  chart: chart
+  image_repo: cgr.li/cloudgear/ksimple-ci-demo
+  scale: 2
+  port: 8080
+  env:
+    APP_ENV: default
+    DEFAULT_USER: admin
+
+dev:
+  env:
+    APP_ENV: dev
+  ingress:
+    hosts:
+      - ${branch_slug}-${app_name}.ci-demo.review.app.kubelab.io
+
+production:
+  namespace: ci-eval-prod
+  env:
+    APP_ENV: production
+    DEFAULT_USER: secure
+  ingress:
+    hosts:
+      - ci-demo.app.kubelab.io
