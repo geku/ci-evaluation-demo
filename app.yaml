@@ -1,5 +1,5 @@
 default:
-  app_name: ci-evaluation
+  app_name: ci-demo
   chart: chart
   image_repo: cgr.li/cloudgear/ksimple-ci-demo
   scale: 2
@@ -13,7 +13,7 @@ dev:
     APP_ENV: dev
   ingress:
     hosts:
-      - ${branch_slug}-${app_name}.ci-demo.review.app.kubelab.io
+      - ${branch_slug}-${app_name}.review.app.kubelab.io
 
 production:
   namespace: ci-eval-prod
