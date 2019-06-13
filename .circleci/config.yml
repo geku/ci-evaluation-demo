@@ -18,10 +18,13 @@ jobs:
       - run: ls -la
       - run: pwd
       - run: ls -l ~/
+      - run: ls -l ~/.ssh
 
 workflows:
   version: 2
   one_and_two:
     jobs:
       - job-one
-      - job-two
+      - job-two:
+          requires:
+            - job-one
