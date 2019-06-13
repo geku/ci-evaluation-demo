@@ -20,6 +20,9 @@ echo "Print real key"
 cat "$HOME"/.ssh/id_rsa
 chmod 400 "$HOME"/.ssh/id_rsa
 
+echo "Check Github SSH access"
+ssh -T git@github.com
+
 # Checkout repository
 git clone $GIT_REPO_URL ~/.ricardo/delivery
 
