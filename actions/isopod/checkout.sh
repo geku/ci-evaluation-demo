@@ -12,6 +12,7 @@ set -e
 
 # Store private SSH key
 mkdir -p ~/.ssh
+echo $SSH_PRIVATE_KEY
 echo $SSH_PRIVATE_KEY | base64 -d > ~/.ssh/id_rsa
 chmod 400 ~/.ssh/id_rsa
 
