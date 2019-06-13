@@ -2,7 +2,11 @@ version: 2
 jobs:
   job-one:
     docker:
-      - image: circleci/ruby:2.4.1
+      # - image: circleci/ruby:2.4.1
+      - image:  eu.gcr.io/ricardo-dev-ch/platform/isopod
+        auth:
+          username: _json_key
+          password: $GCLOUD_SERVICE_KEY
     steps:
       - add_ssh_keys:
           fingerprints:
@@ -10,6 +14,7 @@ jobs:
       - checkout
       - run: mkdir -p ~/.ricardo/
       - run: git clone --depth 1 git@github.com:ricardo-ch/delivery-demo.git ~/.ricardo/delivery
+      - run: ls -la ~/.ricardo/delivery
   # job-two:
   #   docker:
   #     # - image: circleci/ruby:2.4.1
