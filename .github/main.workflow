@@ -9,7 +9,6 @@ action "Run Isopod" {
   args = "checkout.sh"
   env = {
     GIT_REPO_URL = "git@github.com:ricardo-ch/delivery-demo.git"
-    DEMO = "AnyValue"
   }
 }
 
