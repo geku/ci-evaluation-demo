@@ -6,7 +6,7 @@ workflow "Build" {
 action "Run Isopod" {
   uses = "./actions/isopod"
   secrets = ["SSH_PRIVATE_KEY"]
-  args = "checkout.sh"
+  args = "env"
   env = {
     GIT_REPO_URL = "git@github.com:ricardo-ch/delivery-demo.git"
     DEMO = "AnyValue"
