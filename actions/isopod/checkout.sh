@@ -18,6 +18,9 @@ cat ~/key
 echo "$SSH_PRIVATE_KEY" | base64 -d > "$HOME"/.ssh/id_rsa
 chmod 400 "$HOME"/.ssh/id_rsa
 
+echo "=================="
+ls -l "$HOME"/.ssh/
+
 echo "Check Github SSH access"
 ssh -i "$HOME"/.ssh/id_rsa -T git@github.com
 
