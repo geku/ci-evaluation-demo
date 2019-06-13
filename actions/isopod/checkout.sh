@@ -16,12 +16,10 @@ echo $SSH_PRIVATE_KEY > ~/key
 echo "Print key"
 cat ~/key
 echo "$SSH_PRIVATE_KEY" | base64 -d > "$HOME"/.ssh/id_rsa
-echo "Print real key"
-cat "$HOME"/.ssh/id_rsa
 chmod 400 "$HOME"/.ssh/id_rsa
 
 echo "Check Github SSH access"
-ssh -T git@github.com
+ssh -i "$HOME"/.ssh/id_rsa -T git@github.com
 
 # Checkout repository
 git clone $GIT_REPO_URL ~/.ricardo/delivery
