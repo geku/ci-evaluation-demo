@@ -1,0 +1,17 @@
+metadata:
+  chart: backend-service
+  maintainers: []
+  labels:
+    appName: ci-demo
+    topic: platform
+    role: api
+    tiers: backend
+    language: go
+
+default:
+  namespace: platform-demo
+  replicaCount: 1
+  ingress:
+    enabled: true
+  env:
+    API_ENDPOINT: "http://localhost:3000"
