@@ -1,0 +1,27 @@
+version: 2
+jobs:
+  job-one:
+    docker:
+      - image: circleci/ruby:2.4.1
+    steps:
+      - checkout
+      - run: echo "A first hello"
+      - run: sleep 25
+  job-two:
+    docker:
+      # - image: circleci/ruby:2.4.1
+      - image: ruby:2.6.3
+    steps:
+      - checkout
+      - run: echo "A more familiar hi"
+      - run: sleep 15
+      - run: ls -la
+      - run: pwd
+      - run: ls -l ~/
+
+workflows:
+  version: 2
+  one_and_two:
+    jobs:
+      - job-one
+      - job-two
