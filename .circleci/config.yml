@@ -12,9 +12,11 @@ jobs:
           fingerprints:
             - "db:02:b9:24:9d:da:2d:10:d1:f4:25:33:28:de:f2:60"
       - checkout
-      - run: mkdir -p ~/.ricardo/
-      - run: git clone --depth 1 git@github.com:ricardo-ch/delivery-demo.git ~/.ricardo/delivery
-      - run: ls -la ~/.ricardo/delivery
+      # - run: mkdir -p ~/.ricardo/
+      # - run: git clone --depth 1 git@github.com:ricardo-ch/delivery-demo.git ~/.ricardo/delivery
+      # - run: ls -la ~/.ricardo/delivery
+      - run: isopod update
+      - run: isopod info
   # job-two:
   #   docker:
   #     # - image: circleci/ruby:2.4.1
