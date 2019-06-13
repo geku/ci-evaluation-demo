@@ -4,27 +4,29 @@ jobs:
     docker:
       - image: circleci/ruby:2.4.1
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "db:02:b9:24:9d:da:2d:10:d1:f4:25:33:28:de:f2:60"
       - checkout
-      - run: echo "A first hello"
-      - run: sleep 25
-  job-two:
-    docker:
-      # - image: circleci/ruby:2.4.1
-      - image: ruby:2.6.3
-    steps:
-      - checkout
-      - run: echo "A more familiar hi"
-      - run: sleep 15
-      - run: ls -la
-      - run: pwd
-      - run: ls -l ~/
-      - run: ls -l ~/.ssh
+      - run: mkdir -p ~/.ricardo/
+      - run: git clone --depth 1 git@github.com:ricardo-ch/delivery-demo.git ~/.ricardo/delivery
+  # job-two:
+  #   docker:
+  #     # - image: circleci/ruby:2.4.1
+  #     - image: ruby:2.6.3
+  #   steps:
+  #     - checkout
+  #     - run: echo "A more familiar hi"
+  #     - run: ls -la
+  #     - run: pwd
+  #     - run: ls -l ~/
+  #     - run: ls -l ~/.ssh
 
 workflows:
   version: 2
   one_and_two:
     jobs:
       - job-one
-      - job-two:
-          requires:
-            - job-one
+      # - job-two:
+      #     requires:
+      #       - job-one
