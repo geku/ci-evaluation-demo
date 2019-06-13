@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -xe
 
 # Expected ENV variables
 # $SSH_PRIVATE_KEY
@@ -22,9 +22,9 @@ echo "Check Github SSH access"
 ssh -i "$HOME"/.ssh/id_rsa -T git@github.com
 
 # Checkout repository
-git clone $GIT_REPO_URL ~/.ricardo/delivery
+#git clone $GIT_REPO_URL ~/.ricardo/delivery
 
 # Output repository content for debugging
-pushd ~/.ricardo/delivery  > /dev/null
-echo "checked out ${GIT_REPO_URL} revision $(git rev-parse HEAD)"
-popd  > /dev/null
+#pushd ~/.ricardo/delivery  > /dev/null
+#echo "checked out ${GIT_REPO_URL} revision $(git rev-parse HEAD)"
+#popd  > /dev/null
