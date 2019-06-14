@@ -2,7 +2,7 @@ version: 2
 jobs:
   job-one:
     docker:
-      - image: eu.gcr.io/ricardo-dev-ch/platform/isopod:v2
+      - image: eu.gcr.io/ricardo-dev-ch/platform/isopod:v3
         auth:
           username: _json_key
           password: $GCLOUD_SERVICE_KEY
@@ -12,6 +12,7 @@ jobs:
             - "db:02:b9:24:9d:da:2d:10:d1:f4:25:33:28:de:f2:60"
       - checkout
       - run: gcloud-auth
+      - run: echo $GOOGLE_APPLICATION_CREDENTIALS
       - run: isopod update
       - run: isopod info
       - run: isopod build
