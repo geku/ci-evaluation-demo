@@ -16,13 +16,12 @@ jobs:
             - "db:02:b9:24:9d:da:2d:10:d1:f4:25:33:28:de:f2:60"
       - checkout
       - run: gcloud-auth
-      - run: echo $GOOGLE_APPLICATION_CREDENTIALS
-      - run: ls -la /root/.config/gcloud/legacy_credentials/isopod-builder@ricardo-dev-ch.iam.gserviceaccount.com/adc.json
       - run: isopod update
       - run: isopod info
       - run: isopod build
       - run: kubeconfig
-      - run: kubectl get pods
+      - run: kubectl config view
+      - run: kubectl get nodes
 
       # Manuak image build
       # - run: gcloud builds submit --substitutions=SHORT_SHA="${CIRCLE_SHA1::7}" .
