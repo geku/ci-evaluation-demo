@@ -6,6 +6,8 @@ jobs:
         auth:
           username: _json_key
           password: $GCLOUD_SERVICE_KEY
+    env:
+      GOOGLE_APPLICATION_CREDENTIALS: ~/.config/gcloud/legacy_credentials/isopod-builder@ricardo-dev-ch.iam.gserviceaccount.com/adc.json
     steps:
       - add_ssh_keys:
           fingerprints:
