@@ -2,7 +2,7 @@ version: 2
 jobs:
   job-one:
     docker:
-      - image: eu.gcr.io/ricardo-dev-ch/platform/isopod:v4
+      - image: eu.gcr.io/ricardo-dev-ch/platform/isopod:v5
         auth:
           username: _json_key
           password: $GCLOUD_SERVICE_KEY
