@@ -15,6 +15,7 @@ jobs:
       - checkout
       - run: gcloud-auth
       - run: echo $GOOGLE_APPLICATION_CREDENTIALS
+      - run: ls -la ~/.config/gcloud/legacy_credentials
       - run: isopod update
       - run: isopod info
       - run: isopod build
