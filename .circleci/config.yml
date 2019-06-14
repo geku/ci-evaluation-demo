@@ -7,7 +7,7 @@ jobs:
           username: _json_key
           password: $GCLOUD_SERVICE_KEY
     environment:
-      GOOGLE_APPLICATION_CREDENTIALS: ~/.config/gcloud/legacy_credentials/isopod-builder@ricardo-dev-ch.iam.gserviceaccount.com/adc.json
+      GOOGLE_APPLICATION_CREDENTIALS: /root/.config/gcloud/legacy_credentials/isopod-builder@ricardo-dev-ch.iam.gserviceaccount.com/adc.json
     steps:
       - add_ssh_keys:
           fingerprints:
@@ -15,7 +15,7 @@ jobs:
       - checkout
       - run: gcloud-auth
       - run: echo $GOOGLE_APPLICATION_CREDENTIALS
-      - run: ls -la ~/.config/gcloud/legacy_credentials/isopod-builder@ricardo-dev-ch.iam.gserviceaccount.com
+      - run: ls -la /root/.config/gcloud/legacy_credentials/isopod-builder@ricardo-dev-ch.iam.gserviceaccount.com/adc.json
       - run: isopod update
       - run: isopod info
       - run: isopod build
