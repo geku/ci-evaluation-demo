@@ -21,6 +21,7 @@ jobs:
       - run: kubectl config view
       - run: kubectl get nodes
       - run: cat skaffold.yaml
+      - run: isopod deploy
 
       # Manuak image build
       # - run: gcloud builds submit --substitutions=SHORT_SHA="${CIRCLE_SHA1::7}" .
