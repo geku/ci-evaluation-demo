@@ -14,16 +14,16 @@ jobs:
             - "db:02:b9:24:9d:da:2d:10:d1:f4:25:33:28:de:f2:60"
       - checkout
       - run: gcloud-auth
-      - run: isopod update
-      - run: isopod info
-      - run: isopod build
       - run: kubeconfig
-      - run: kubectl config view
-      - run: kubectl get nodes
-      - run: cat skaffold.yaml
+      - run: isopod setup
+      - run: isopod build
       - run: isopod deploy
-
-      # Manuak image build
+      # Debug commands
+      # - run: isopod info
+      # - run: kubectl config view
+      # - run: kubectl get nodes
+      # - run: cat skaffold.yaml
+      # Manual image build
       # - run: gcloud builds submit --substitutions=SHORT_SHA="${CIRCLE_SHA1::7}" .
 
   # job-two:

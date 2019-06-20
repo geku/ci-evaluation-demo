@@ -7,7 +7,7 @@ import (
 
 func main() {
   http.HandleFunc("/", func (w http.ResponseWriter, r *http.Request) {
-    fmt.Fprintf(w, "Welcome Ksimple! Welcome Pipelines. Welcome review app!")
+    fmt.Fprintf(w, "Welcome Isopod! Welcome Pipelines. Welcome review app!")
   })
 
   http.HandleFunc("/healthz", func (w http.ResponseWriter, r *http.Request) {
