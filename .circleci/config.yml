@@ -8,8 +8,8 @@ jobs:
           password: $GCLOUD_SERVICE_KEY
     environment:
       GOOGLE_APPLICATION_CREDENTIALS: /root/.config/gcloud/legacy_credentials/isopod-builder@ricardo-dev-ch.iam.gserviceaccount.com/adc.json
-      GKE_CLUSTER_ZONE: europe-west1-b
-      GKE_CLUSTER_NAME: dev-honey
+      GKE_CLUSTER_ZONE: europe-west1
+      GKE_CLUSTER_NAME: dev-cookie
     steps:
       - add_ssh_keys:
           fingerprints:
@@ -22,6 +22,7 @@ jobs:
       - run: kubeconfig
       - run: kubectl config view
       - run: kubectl get nodes
+      - run: cat skaffold.yaml
 
       # Manuak image build
       # - run: gcloud builds submit --substitutions=SHORT_SHA="${CIRCLE_SHA1::7}" .
