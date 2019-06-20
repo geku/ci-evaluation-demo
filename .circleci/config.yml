@@ -36,7 +36,9 @@ jobs:
       - checkout
       - run: isopod setup
       - run: isopod ci-setup-access
-      - run: isopod forward &
+      - run:
+          command: isopod forward &
+          background: true
       - run: ps auxf
       - run: curl http://ci-demo-svc:8080/
 
@@ -45,12 +47,11 @@ workflows:
   version: 2
   one_and_two:
     jobs:
-      - deploy:
-          context: dev-cookie
       - integration-test:
           context: dev-cookie
-          requires:
-            - deploy
-      # - job-two:
+      # - deploy:
+      #     context: dev-cookie
+      # - integration-test:
+      #     context: dev-cookie
       #     requires:
-      #       - job-one
+      #       - deploy
