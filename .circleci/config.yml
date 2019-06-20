@@ -13,12 +13,8 @@ jobs:
           fingerprints:
             - "db:02:b9:24:9d:da:2d:10:d1:f4:25:33:28:de:f2:60"
       - checkout
-      - run: which isopod
       - run: isopod update
-      - run: which isopod
-      - run: isopod ci-setup
-      # - run: gcloud-auth
-      # - run: kubeconfig
+      - run: isopod ci-setup-access
       - run: isopod build
       - run: isopod deploy
       # Debug commands
