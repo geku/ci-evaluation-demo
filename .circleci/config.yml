@@ -2,7 +2,7 @@ version: 2
 jobs:
   deploy:
     docker:
-      - image: eu.gcr.io/ricardo-dev-ch/platform/isopod:v7
+      - image: eu.gcr.io/ricardo-dev-ch/platform/isopod:v8
         auth:
           username: _json_key
           password: $GCLOUD_SERVICE_KEY
@@ -23,17 +23,23 @@ jobs:
       # Manual image build
       # - run: gcloud builds submit --substitutions=SHORT_SHA="${CIRCLE_SHA1::7}" .
 
-  # job-two:
-  #   docker:
-  #     # - image: circleci/ruby:2.4.1
-  #     - image: ruby:2.6.3
-  #   steps:
-  #     - checkout
-  #     - run: echo "A more familiar hi"
-  #     - run: ls -la
-  #     - run: pwd
-  #     - run: ls -l ~/
-  #     - run: ls -l ~/.ssh
+  integration-test:
+    docker:
+      - image: eu.gcr.io/ricardo-dev-ch/platform/isopod:v8
+        auth:
+          username: _json_key
+          password: $GCLOUD_SERVICE_KEY
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "db:02:b9:24:9d:da:2d:10:d1:f4:25:33:28:de:f2:60"
+      - checkout
+      - run: isopod setup
+      - run: isopod ci-setup-access
+      - run: isopod forward &
+      - run: ps auxf
+      - run: curl http://ci-demo-svc:8080/
+
 
 workflows:
   version: 2
@@ -41,6 +47,10 @@ workflows:
     jobs:
       - deploy:
           context: dev-cookie
+      - integration-test:
+          context: dev-cookie
+          requires:
+            - deploy
       # - job-two:
       #     requires:
       #       - job-one
