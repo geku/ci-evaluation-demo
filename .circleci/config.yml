@@ -37,7 +37,7 @@ jobs:
       - run: isopod setup
       - run: isopod ci-setup-access
       - run:
-          command: isopod forward &
+          command: isopod forward
           background: true
       - run: ps auxf
       - run: curl http://ci-demo-svc:8080/
