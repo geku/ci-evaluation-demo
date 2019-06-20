@@ -16,8 +16,8 @@ default:
   env:
     API_ENDPOINT: "http://localhost:3000"
 
-staging:
-  namespace: platform-demo-staging
+dev:
+  namespace: platform-demo-dev
   replicaCount: 2
   env:
-    APP_SCOPE: staging
+    APP_SCOPE: dev
