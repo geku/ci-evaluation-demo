@@ -21,7 +21,6 @@ blocks:
             - node --version
 
   - name: Deploy
-    dependencies: ["Tests"]
     task:
       agent:
         machine:
