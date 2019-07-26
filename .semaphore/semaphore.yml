@@ -1,0 +1,48 @@
+# Run CI/CD jobs in Docker images:
+# https://docs.semaphoreci.com/article/127-custom-ci-cd-environment-with-docker
+version: v1.0
+name: CI Demo
+agent:
+  machine:
+    type: e1-standard-2
+
+blocks:
+  - name: Tests
+    task:
+      agent:
+        machine:
+          type: e1-standard-2
+        containers:
+          - name: main
+            image: semaphoreci/node:12.4.0
+      jobs:
+        - name: Using Docker for task
+          commands:
+            - node --version
+
+  - name: Deploy
+    dependencies: ["Tests"]
+    task:
+      agent:
+        machine:
+          type: e1-standard-2
+        containers:
+          - name: main
+            image: geku/taploy
+      jobs:
+        - name: Display info
+          commands:
+            - taploy info
+
+
+  # - name: Create Docker Image
+  #   task:
+  #     jobs:
+  #     - name: Hello
+  #       commands:
+  #         - node -p '"evol".split("").reverse().join("")'
+  #         - apt-get -y update && apt-get install redis-tools
+  #         - redis-cli -h cache "KEYS *"
+          # Uncomment the following line to pull your code,
+          # then proceed by adding your custom commands:
+          #- checkout
